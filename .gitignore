@@ -1,0 +1,45 @@
+.vscode
+
+/Include
+/Lib
+/Scripts
+/pyvenv.cfg
+
+/woodstreet/woodstreet/__pycache__
+
+/woodstreet/migrations
+/woodstreet/confidentials
+
+# woodstreet-ui #
+/woodstreet-ui/node_modules
+
+/woodstreet-ui/.pnp
+/woodstreet-ui/.pnp.js
+
+# testing
+/woodstreet-ui/coverage
+
+# next.js
+/woodstreet-ui/.next/
+/woodstreet-ui/out/
+
+# production
+/woodstreet-ui/build
+
+# misc
+.DS_Store
+/woodstreet-ui/*.pem
+
+# debug
+/woodstreet-ui/npm-debug.log*
+/woodstreet-ui/yarn-debug.log*
+/woodstreet-ui/yarn-error.log*
+
+# local env files
+/woodstreet-ui/.env.local
+/woodstreet-ui/.env.development.local
+/woodstreet-ui/.env.test.local
+/woodstreet-ui/.env.production.local
+
+# vercel
+/woodstreet-ui/.vercel
