@@ -8,6 +8,9 @@ module.exports = {
         fadeOutTranslate: 'fadeOutTranslate 200ms ease-in-out',
       },
       colors: {
+        footerBg: {
+          DEFAULT: '#f8f8f8',
+        },
         link: {
           light: 'rgba(25, 144, 198, 0.08)',
           DEFAULT: '#1990c6',
