@@ -13,7 +13,7 @@ import {
   XIcon,
 } from '@heroicons/react/outline';
 
-import IconUser from '../../assets/svg/IconUser';
+import IconUser from '../assets/svg/IconUser';
 
 export default function Navbar(props) {
   const [state, setState] = useState({
@@ -41,15 +41,15 @@ export default function Navbar(props) {
   };
 
   return (
-    <>
-      <header className='grid place-self-center place-items-center grid-cols-8 gap-1 gap-y-6 sticky font-sans py-3 w-full px-4% md:grid-cols-2 xl:grid-cols-10'>
+    <div className='fixed z-40 bg-white w-full'>
+      <header className='grid place-self-center place-items-center grid-cols-8 gap-1 gap-y-6  font-sans py-3 w-full px-4% md:grid-cols-2 xl:grid-cols-10 z-40'>
         <div
           ref={hamburgerMenuRef}
           className='flex justify-center items-center relative w-12 h-12 place-self-center col-span-1 md:hidden'
           onClick={onHamburgerClick}>
           <MenuIcon className='w-8 h-8 text-primary hover:text-primary-backgroundActive cursor-pointer' />
         </div>
-        <h2 className='col-span-5 self-center text-center md:col-span-1 md:row-span-1 md:text-left md:place-self-start xl:col-start-1 xl:col-span-3'>
+        <h2 className='col-span-5 self-center text-center md:col-span-1 md:row-span-1 md:text-left md:place-self-start xl:col-start-1 xl:col-span-3 '>
           <Link href='/'>
             <a className='text-3xl font-sans font-bold md:text-4.5xl'>
               WoodStreet{''}
@@ -209,12 +209,12 @@ export default function Navbar(props) {
         <div className='flex flex-col justify-center items-center h-full w-full'>
           <input
             placeholder='Press Enter to Search'
-            className='w-4/5 md:w-1/2 h-16 bg-transparent border-b-2 border-white text-white placeholder-current outline-none'
+            className='w-4/5 md:w-1/2 h-20 bg-transparent border-b-2 border-white text-4xl text-white placeholder-current outline-none'
             type='text'
             onKeyDownCapture={onSearchKeyDownPress}
           />
         </div>
       </Transition>
-    </>
+    </div>
   );
 }

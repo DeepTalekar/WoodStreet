@@ -11,6 +11,9 @@ module.exports = {
         footerBg: {
           DEFAULT: '#f8f8f8',
         },
+        grannySmith: {
+          DEFAULT: '#809394',
+        },
         link: {
           light: 'rgba(25, 144, 198, 0.08)',
           DEFAULT: '#1990c6',
@@ -38,6 +41,9 @@ module.exports = {
       fontFamily: {
         sans: ['Lato', 'sans-serif'],
       },
+      height: {
+        907: '907px',
+      },
       inset: {
         '4%': '4%',
         '-4%': '-4%',
@@ -58,6 +64,7 @@ module.exports = {
       },
       padding: {
         '4%': '4%',
+        '-4%': '-4%',
       },
     },
   },
