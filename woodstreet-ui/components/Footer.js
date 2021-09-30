@@ -68,11 +68,11 @@ const footerCategories = [
     subCategories: [
       {
         label: 'About Us',
-        href: '/',
+        href: '/About',
       },
       {
         label: 'Contact',
-        href: '/',
+        href: '/Contact',
       },
     ],
   },

@@ -16,7 +16,7 @@ export default function Screen(props) {
         <title>{props.title}</title>
       </Head>
       <Navbar />
-      <div className='pt-16'>{props.children}</div>
+      <main className='pt-16'>{props.children}</main>
       <Footer />
     </>
   );

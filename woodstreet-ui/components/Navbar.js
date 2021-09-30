@@ -85,13 +85,13 @@ export default function Navbar(props) {
             </Link>
           </li>
           <li className='hover:text-link'>
-            <Link href='/'>
+            <Link href='/About'>
               <a>About</a>
             </Link>
           </li>
 
           <li className='hover:text-link'>
-            <Link href='/'>
+            <Link href='/Contact'>
               <a>Contact</a>
             </Link>
           </li>
@@ -168,12 +168,12 @@ export default function Navbar(props) {
                 )}
               </Menu>
               <li>
-                <Link href='/'>
+                <Link href='/About'>
                   <a className='text-lg font-normal hover:text-link'>About</a>
                 </Link>
               </li>
               <li>
-                <Link href='/'>
+                <Link href='/Contact'>
                   <a className='text-lg font-normal hover:text-link'>Contact</a>
                 </Link>
               </li>

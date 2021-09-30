@@ -14,6 +14,9 @@ module.exports = {
         grannySmith: {
           DEFAULT: '#809394',
         },
+        inputGray: {
+          DEFAULT: '#ECECEC',
+        },
         link: {
           light: 'rgba(25, 144, 198, 0.08)',
           DEFAULT: '#1990c6',
@@ -28,6 +31,7 @@ module.exports = {
           DEFAULT: '#292929',
         },
         secondary: {
+          slightLight: '#f7e8b5',
           light: 'rgba(245, 212, 97, 0.8)',
           veryLight: 'rgba(245, 212, 97, 0.2)',
           DEFAULT: '#f5d461',
@@ -45,6 +49,7 @@ module.exports = {
         sans: ['Lato', 'sans-serif'],
       },
       height: {
+        350: '350px',
         907: '907px',
       },
       inset: {
@@ -70,7 +75,6 @@ module.exports = {
         '-4%': '-4%',
         '16%': '16%',
         '12%': '12%',
-
       },
     },
   },
