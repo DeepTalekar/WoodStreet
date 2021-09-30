@@ -18,6 +18,9 @@ module.exports = {
           light: 'rgba(25, 144, 198, 0.08)',
           DEFAULT: '#1990c6',
         },
+        mineShaft: {
+          DEFAULT: '#313131',
+        },
         primary: {
           light: 'rgba(41, 41, 41, 0.1)',
           backgroundActive: 'rgba(41, 41, 41, 0.8)',
@@ -75,6 +78,7 @@ module.exports = {
     extend: {
       fill: ['hover', 'focus'],
       stroke: ['hover', 'focus'],
+      scale: ['active', 'hover', 'group-hover'],
     },
   },
   plugins: [],
