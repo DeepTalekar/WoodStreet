@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import Link from 'next/link';
 
 import Accessories from '../public/images/Shop_Accessories.jpg';
@@ -7,6 +6,7 @@ import Decorative from '../public/images/Shop_DecorativeObjects.jpg'
 import Furniture from '../public/images/Shop_LivingRooms.jpg'
 import Lightning from '../public/images/Shop_Lighting.jpg'
 import Sitting from '../public/images/Shop_SittingArea-Furniture.jpg'
+import Shopp from '../components/Shopp';
 
 import Screen from '../components/Screen';
 
@@ -19,125 +19,61 @@ const Shop = (props) => {
                   <div className='grid auto-cols-auto auto-rows-min gap-4 px-4%'>
         <Link href='/'>
           <div className='relative row-start-1  col-start-1 row-span-2 col-span-4 place-items-center cursor-pointer group'>
-           <p className='absolute z-10 left-11 bottom-11 text-white text-2xl font-semibold'>
-               Accessories
-           </p>
-            <Image
-              className='group-hover:scale-105 transform-gpu duration-200 ease-out'
-              src={Accessories}
-              alt='Accessories'
-              objectFit='cover'
-              layout='responsive'
-              placeholder='blur'
-              placeholder='blur'
-              quality={100}
-            />
-          </div>
+           <Shopp
+             name="Accessories"
+             image={Accessories}
+             />
+           </div>
           
         </Link>
 
         <Link href='/'>
           <div className='relative col-start-5 row-start-1 row-span-2 col-span-4 place-items-center cursor-pointer group'>
-            <p className='absolute z-10 left-11 bottom-11 text-white text-2xl font-semibold'>
-              Architectural Photography
-            </p>
-            <Image
-              className='group-hover:scale-105 transform-gpu duration-200 ease-out'
-              src={Architectural}
-              alt='Architectural'
-              objectFit='cover'
-              layout='responsive'
-              placeholder='blur'
-              placeholder='blur'
-              quality={100}
-            />
+          <Shopp
+             name="Architectural Photography"
+             image={Architectural}
+             />
           </div>
           
         </Link>
 
         <Link href='/'>
           <div className='relative col-start-9 row-start-1 row-span-2 col-span-4 place-items-center cursor-pointer group'>
-            <p className='absolute z-10 left-11 bottom-11 text-white text-2xl font-semibold'>
-              Decorative Objects
-            </p>
-            <Image
-              className='group-hover:scale-105 transform-gpu duration-200 ease-out'
-              src={Decorative}
-              alt='Decorative'
-              objectFit='cover'
-              layout='responsive'
-              placeholder='blur'
-              placeholder='blur'
-              quality={100}
-              
-            />
+          <Shopp
+             name="Decorative Objects"
+             image={Decorative}
+             />
           </div>
-          
         </Link>
-
-
-
-
 
         <Link href='/'>
           <div className='relative row-start-5  col-start-1 row-span-2 col-span-4 place-items-center cursor-pointer group'>
-            <p className='absolute z-10 left-11 bottom-11 text-white text-2xl font-semibold'>
-              Furniture
-            </p>
-            <Image
-              className='group-hover:scale-105 transform-gpu duration-200 ease-out'
-              src={Furniture}
-              alt='Furniture'
-              objectFit='cover'
-              layout='responsive'
-              placeholder='blur'
-              placeholder='blur'
-              quality={100}
-            />
+          <Shopp
+             name="Furniture"
+             image={Furniture}
+             />
           </div>
-          
         </Link>
 
         <Link href='/'>
           <div className='relative col-start-5 row-start-5 row-span-2 col-span-4 place-items-center cursor-pointer group'>
-            <p className='absolute z-10 left-11 bottom-11 text-white text-2xl font-semibold'>
-              Lightning
-            </p>
-            <Image
-              className='group-hover:scale-105 transform-gpu duration-200 ease-out'
-              src={Lightning}
-              alt='Lightning'
-              objectFit='cover'
-              layout='responsive'
-              placeholder='blur'
-              placeholder='blur'
-              quality={100}
-            />
+          <Shopp
+             name="Lightning"
+             image={Lightning}
+             />
           </div>
-          
-        </Link>
+         </Link>
 
         <Link href='/'>
           <div className='relative col-start-9 row-start-5 row-span-2 col-span-4 place-items-center cursor-pointer group'>
-            <p className='absolute z-10 left-11 bottom-11 text-white text-2xl font-semibold'>
-              Sitting Area Furniture
-            </p>
-            <Image
-              className='group-hover:scale-105 transform-gpu duration-200 ease-out'
-              src={Sitting}
-              alt='Sitting'
-              objectFit='cover'
-              layout='responsive'
-              placeholder='blur'
-              placeholder='blur'
-              quality={100}
-              
-            />
+          <Shopp
+             name="Sitting area Furniture"
+             image={Sitting}
+             />
           </div>
-          
-        </Link>
+         </Link>
         
-        </div>
+         </div>
         </div>
         </Screen>
     )
