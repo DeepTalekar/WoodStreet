@@ -80,7 +80,7 @@ export default function Navbar(props) {
         {/* Laptop/Desktop Navigation Start */}
         <ul className='hidden col-span-1 place-self-start place-items-center grid-cols-3 gap-x-6 font-bold text-primary text-base md:row-span-1 md:relative md:grid xl:row-start-1 xl:col-start-4 xl:col-span-4 xl:place-self-center'>
           <li className='hover:text-link'>
-            <Link href='/'>
+            <Link href='/Shop'>
               <a>Shop</a>
             </Link>
           </li>
