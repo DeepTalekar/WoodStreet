@@ -64,7 +64,7 @@ export default function Navbar(props) {
             />
           </div>
           <div className='place-self-center col-span-1 hidden md:inline'>
-            <Link href='/'>
+            <Link href='/Login'>
               <span>
                 <IconUser height={50} width={50} />
               </span>
@@ -178,7 +178,7 @@ export default function Navbar(props) {
                 </Link>
               </li>
               <li>
-                <Link href='/'>
+                <Link href='/Login'>
                   <a className='text-lg font-normal hover:text-link'>
                     Sign In / Sign Up
                   </a>
