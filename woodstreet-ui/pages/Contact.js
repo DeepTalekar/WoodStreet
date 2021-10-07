@@ -1,3 +1,8 @@
+/*
+  @author Aarya
+  @contributor Deep
+*/
+
 import Image from 'next/image';
 
 import heroImage from '../public/images/contact_hero.webp';

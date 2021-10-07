@@ -16,7 +16,7 @@ export default function Screen(props) {
         <title>{props.title}</title>
       </Head>
       <Navbar />
-      <main className='pt-16'>{props.children}</main>
+      <main className='font-sans pt-16'>{props.children}</main>
       <Footer />
     </>
   );

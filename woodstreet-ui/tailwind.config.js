@@ -8,6 +8,13 @@ module.exports = {
         fadeOutTranslate: 'fadeOutTranslate 200ms ease-in-out',
       },
       colors: {
+        badge: {
+          sale: '#1990c6',
+          sold: '#a3a3a3',
+        },
+        carouselBorder: {
+          DEFAULT: '#f5f1f1',
+        },
         footerBg: {
           DEFAULT: '#f8f8f8',
         },
@@ -23,6 +30,9 @@ module.exports = {
         },
         mineShaft: {
           DEFAULT: '#313131',
+        },
+        porcelain: {
+          DEFAULT: '#E5ECEC',
         },
         primary: {
           light: 'rgba(41, 41, 41, 0.1)',
@@ -50,6 +60,7 @@ module.exports = {
       },
       height: {
         350: '350px',
+        500: '500px',
         907: '907px',
       },
       inset: {
@@ -75,6 +86,10 @@ module.exports = {
         '-4%': '-4%',
         '16%': '16%',
         '12%': '12%',
+      },
+      width: {
+        400: '400px',
+        500: '500px',
       },
     },
   },

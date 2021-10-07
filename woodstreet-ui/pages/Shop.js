@@ -1,82 +1,65 @@
-import Link from 'next/link';
+/*
+  @author Aarya
+  @contributor Deep
+*/
 
 import Accessories from '../public/images/Shop_Accessories.jpg';
-import Architectural from '../public/images/Shop_DelicateStructure.jpg'
-import Decorative from '../public/images/Shop_DecorativeObjects.jpg'
-import Furniture from '../public/images/Shop_LivingRooms.jpg'
-import Lightning from '../public/images/Shop_Lighting.jpg'
-import Sitting from '../public/images/Shop_SittingArea-Furniture.jpg'
-import Shopp from '../components/Shopp';
+import Architectural from '../public/images/Shop_DelicateStructure.jpg';
+import Decorative from '../public/images/Shop_DecorativeObjects.jpg';
+import Furniture from '../public/images/Shop_LivingRooms.jpg';
+import Lightning from '../public/images/Shop_Lighting.jpg';
+import Sitting from '../public/images/Shop_SittingArea-Furniture.jpg';
+import ShopCategories from '../components/ShopCategories';
 
 import Screen from '../components/Screen';
 
-import React from 'react'
-
 const Shop = (props) => {
-    return (
-        <Screen>
-            <div className="mt-16 mb-10">
-                  <div className='grid auto-cols-auto auto-rows-min gap-4 px-4%'>
-        <Link href='/'>
-          <div className='relative row-start-1  col-start-1 row-span-2 col-span-4 place-items-center cursor-pointer group'>
-           <Shopp
-             name="Accessories"
-             image={Accessories}
-             />
-           </div>
-          
-        </Link>
-
-        <Link href='/'>
-          <div className='relative col-start-5 row-start-1 row-span-2 col-span-4 place-items-center cursor-pointer group'>
-          <Shopp
-             name="Architectural Photography"
-             image={Architectural}
-             />
+  return (
+    <Screen title='Collection | WoodStreet'>
+      <div className='bg-footerBg pt-16 pb-10'>
+        <p className='text-primary text-3xl font-bold text-center mb-6'>
+          Shop by collection
+        </p>
+        <div className='grid grid-cols-9 auto-rows-min gap-7 px-4%'>
+          <div className='relative row-start-1 col-start-1 row-span-3 col-span-3 place-items-center cursor-pointer group'>
+            <ShopCategories name='Accessories' image={Accessories} href='/' />
           </div>
-          
-        </Link>
 
-        <Link href='/'>
-          <div className='relative col-start-9 row-start-1 row-span-2 col-span-4 place-items-center cursor-pointer group'>
-          <Shopp
-             name="Decorative Objects"
-             image={Decorative}
-             />
+          <div className='relative col-start-4 row-start-1 row-span-3 col-span-3 place-items-center cursor-pointer group'>
+            <ShopCategories
+              name='Architectural Photography'
+              image={Architectural}
+              href='/'
+            />
           </div>
-        </Link>
 
-        <Link href='/'>
-          <div className='relative row-start-5  col-start-1 row-span-2 col-span-4 place-items-center cursor-pointer group'>
-          <Shopp
-             name="Furniture"
-             image={Furniture}
-             />
+          <div className='relative col-start-7 row-start-1 row-span-3 col-span-3 place-items-center cursor-pointer group'>
+            <ShopCategories
+              name='Decorative Objects'
+              image={Decorative}
+              href='/'
+            />
           </div>
-        </Link>
 
-        <Link href='/'>
-          <div className='relative col-start-5 row-start-5 row-span-2 col-span-4 place-items-center cursor-pointer group'>
-          <Shopp
-             name="Lightning"
-             image={Lightning}
-             />
+          <div className='relative row-start-4  col-start-1 row-span-3 col-span-3 place-items-center cursor-pointer group'>
+            <ShopCategories name='Furniture' image={Furniture} href='/' />
           </div>
-         </Link>
 
-        <Link href='/'>
-          <div className='relative col-start-9 row-start-5 row-span-2 col-span-4 place-items-center cursor-pointer group'>
-          <Shopp
-             name="Sitting area Furniture"
-             image={Sitting}
-             />
+          <div className='relative col-start-4 row-start-4 row-span-3 col-span-3 place-items-center cursor-pointer group'>
+            <ShopCategories name='Lighting' image={Lightning} href='/' />
           </div>
-         </Link>
-        
-         </div>
+
+          <div className='relative col-start-7 row-start-4 row-span-3 col-span-3 place-items-center cursor-pointer group'>
+            <ShopCategories
+              name='Sitting Area Furniture'
+              image={Sitting}
+              href='/'
+            />
+          </div>
         </div>
-        </Screen>
-    )
-}
+      </div>
+    </Screen>
+  );
+};
 
-export default Shop
+export default Shop;
