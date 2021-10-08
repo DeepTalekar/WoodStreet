@@ -15,6 +15,9 @@ module.exports = {
         carouselBorder: {
           DEFAULT: '#f5f1f1',
         },
+        error: {
+          DEFAULT: '#D02E2E',
+        },
         footerBg: {
           DEFAULT: '#f8f8f8',
         },
@@ -22,6 +25,7 @@ module.exports = {
           DEFAULT: '#809394',
         },
         inputGray: {
+          error: '#FFF6F6',
           DEFAULT: '#ECECEC',
         },
         link: {
@@ -98,6 +102,7 @@ module.exports = {
       fill: ['hover', 'focus'],
       stroke: ['hover', 'focus'],
       scale: ['active', 'hover', 'group-hover'],
+      placeholder: ['group-focus'],
     },
   },
   plugins: [],
