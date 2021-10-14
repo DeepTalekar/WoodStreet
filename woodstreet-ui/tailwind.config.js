@@ -100,6 +100,7 @@ module.exports = {
   variants: {
     extend: {
       fill: ['hover', 'focus'],
+      fontWeight: ['hover'],
       stroke: ['hover', 'focus'],
       scale: ['active', 'hover', 'group-hover'],
       placeholder: ['group-focus'],

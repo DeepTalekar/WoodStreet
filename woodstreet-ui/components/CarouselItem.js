@@ -9,36 +9,9 @@ import { StarIcon } from '@heroicons/react/solid';
 import { StarIcon as OutlineStarIcon } from '@heroicons/react/outline';
 
 import ProductBadge from './ProductBadge';
+import ReviewStars from './ReviewStars';
 
 export default function CarouselItem(props) {
-  const renderReviewStars = () => {
-    let stars = [];
-    for (let index = 0; index < props.starCount; index++) {
-      const element = (
-        <StarIcon
-          key={index}
-          className='text-secondary'
-          width={18}
-          height={18}
-        />
-      );
-      stars.push(element);
-    }
-    for (let index = props.starCount; index < 5; index++) {
-      const element = (
-        <OutlineStarIcon
-          key={index}
-          className='text-primary'
-          width={16}
-          height={16}
-        />
-      );
-      stars.push(element);
-    }
-
-    return stars;
-  };
-
   return (
     <div className='relative flex flex-col justify-between items-start w-400 h-500 p-1 bg-white border border-carouselBorder'>
       {props?.onSale !== undefined && (
@@ -54,7 +27,7 @@ export default function CarouselItem(props) {
           </a>
         </Link>
         <div className='flex flex-row justify-between items-center mb-3'>
-          {renderReviewStars()}
+          <ReviewStars starCount={props.starCount} />
           <p className='text-primary font-normal text-sm'>
             {props.reviews} review
           </p>
