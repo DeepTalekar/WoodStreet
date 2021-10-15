@@ -14,8 +14,8 @@ export default function ReviewStars(props) {
         <StarIcon
           key={index}
           className='text-secondary'
-          width={18}
-          height={18}
+          width={!!props?.size ? props.size : 18}
+          height={!!props?.size ? props.size : 18}
         />
       );
       stars.push(element);
@@ -25,8 +25,8 @@ export default function ReviewStars(props) {
         <OutlineStarIcon
           key={index}
           className='text-primary'
-          width={16}
-          height={16}
+          width={!!props?.size ? props.size - 2 : 16}
+          height={!!props?.size ? props.size - 2 : 16}
         />
       );
       stars.push(element);

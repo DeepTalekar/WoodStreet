@@ -6,7 +6,7 @@ import { ExclamationCircleIcon } from '@heroicons/react/outline';
 import { useField } from 'formik';
 import { forwardRef } from 'react';
 
-const Input = forwardRef(({ className, ...props }, ref) => {
+const Input = forwardRef(({ className, label = false, ...props }, ref) => {
   const [field, meta] = useField(props);
 
   const errorClasses =
@@ -16,6 +16,9 @@ const Input = forwardRef(({ className, ...props }, ref) => {
 
   return (
     <>
+      {label && (
+        <label className='text-primary text-sm font-bold'>{label}</label>
+      )}
       <input
         ref={ref}
         className={`w-full p-2 outline-none text-mineShaft text-sm font-normal placeholder-mineShaft border ${errorClasses} ${className} transition-all duration-200`}

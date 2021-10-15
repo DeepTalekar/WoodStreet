@@ -23,3 +23,9 @@ export const password = Yup.string()
   )
   .label('Password')
   .min(8, 'Minimum 8 characters are required!');
+
+export const rating = Yup.number().required().max(5).min(1).label('Rating');
+
+export const reviewTitle = Yup.string().required().max(256).min(3);
+
+export const reviewBody = Yup.string().required().max(1500).min(3);

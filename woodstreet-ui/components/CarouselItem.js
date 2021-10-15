@@ -21,7 +21,7 @@ export default function CarouselItem(props) {
       )}
       <Image src={props.image} alt={props?.imageAlt} />
       <section className='flex flex-col flex-auto p-3'>
-        <Link href='#'>
+        <Link href='/product/StaticPage'>
           <a className='font-normal text-primary text-base mb-3'>
             {props.name}
           </a>
