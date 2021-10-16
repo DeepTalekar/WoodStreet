@@ -6,9 +6,9 @@
 /pyvenv.cfg
 
 /woodstreet/woodstreet/__pycache__
-/woodstreet/api/__pycache__
+/woodstreet/accounts/__pycache__
 
-/woodstreet/api/migrations
+/woodstreet/accounts/migrations
 /woodstreet/migrations
 /woodstreet/confidentials
 
