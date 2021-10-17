@@ -29,3 +29,9 @@ export const rating = Yup.number().required().max(5).min(1).label('Rating');
 export const reviewTitle = Yup.string().required().max(256).min(3);
 
 export const reviewBody = Yup.string().required().max(1500).min(3);
+
+export const mobileNumber = Yup.string()
+  .matches(/^[0-9]+$/, 'Must be Integer Only!')
+  .min(10, 'Must be at least 10 digits')
+  .max(10)
+  .required();
