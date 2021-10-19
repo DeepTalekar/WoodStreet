@@ -71,7 +71,7 @@ export default function Navbar(props) {
             </Link>
           </div>
           <div className='place-self-center col-span-1'>
-            <Link href='/'>
+            <Link href='/Cart'>
               <ShoppingCartIcon className='w-6 h-6 text-primary hover:text-link cursor-pointer' />
             </Link>
           </div>
