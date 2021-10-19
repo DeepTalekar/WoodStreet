@@ -6,6 +6,7 @@
 import { useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { Formik, Form } from 'formik';
 import { object } from 'yup';
 
@@ -34,8 +35,11 @@ const initialValues = {
 };
 
 export default function Register(props) {
+  const router = useRouter();
+
   const registerSuccess = useSelector((state) => state.auth.registerSuccess);
   const loading = useSelector((state) => state.auth.loading);
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const dispatch = useDispatch();
 
   const formRef = useRef(null);
@@ -61,6 +65,10 @@ export default function Register(props) {
       );
     }
   };
+
+  if (typeof window !== 'undefined' && isAuthenticated) router.push('/');
+
+  if (registerSuccess) router.push('/Login');
 
   return (
     <Screen title='Create Account | WoodStreet'>

@@ -2,8 +2,11 @@
   author @Deep
   contributor 
 */
+
 import React, { useRef, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { Menu, Transition } from '@headlessui/react';
 import {
   ChevronDownIcon,
@@ -13,9 +16,22 @@ import {
   XIcon,
 } from '@heroicons/react/outline';
 
+import { logout } from '../redux/actions/auth';
+
 import IconUser from '../assets/svg/IconUser';
 
 export default function Navbar(props) {
+  const router = useRouter();
+
+  const dispatch = useDispatch();
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+
+  const logoutHandler = () => {
+    if (dispatch && dispatch !== null && dispatch !== undefined) {
+      dispatch(logout());
+    }
+  };
+
   const [state, setState] = useState({
     isMenuOpen: false,
     isSearchEnable: false,

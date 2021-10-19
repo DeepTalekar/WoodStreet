@@ -3,22 +3,32 @@
   @contributor 
 */
 
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { Formik, Form } from 'formik';
 import { object } from 'yup';
 
-import { email, password } from '../config/validation';
+import { username, password } from '../config/validation';
+
+import { login, resetRegisterSuccess } from './../redux/actions/auth';
 
 import Screen from './../components/Screen';
 import Input from './../components/Input';
 import Button from './../components/Button';
 
-const validationSchema = object().shape({ email, password });
+const validationSchema = object().shape({ username, password });
 
-const initialValues = { email: '', password: '' };
+const initialValues = { username: '', password: '' };
 
 export default function Login(props) {
+  const dispatch = useDispatch();
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  const loading = useSelector((state) => state.auth.loading);
+
+  const router = useRouter();
+
   const formRef = useRef(null);
 
   const onSubmit = (values, { setSubmitting }) => {
@@ -27,7 +37,18 @@ export default function Login(props) {
       formRef.current.reset();
       setSubmitting(false);
     }, 400);
+    if (dispatch && dispatch !== null && dispatch !== undefined) {
+      dispatch(login(values.username, values.password));
+    }
   };
+
+  useEffect(() => {
+    if (dispatch && dispatch !== null && dispatch !== undefined) {
+      dispatch(resetRegisterSuccess());
+    }
+  }, []);
+
+  if (typeof window !== 'undefined' && isAuthenticated) router.push('/');
 
   return (
     <Screen title='Account | WoodStreet'>
@@ -42,7 +63,7 @@ export default function Login(props) {
                 ref={formRef}
                 className='flex flex-col justify-center text-center w-500 space-y-3'>
                 <h2 className='text-primary font-bold text-3xl'>Login</h2>
-                <Input name='email' type='email' placeholder='Email' />
+                <Input name='username' type='text' placeholder='Username' />
                 <Input name='password' type='password' placeholder='Password' />
                 <div className='self-start'>
                   <Button
