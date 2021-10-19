@@ -4,11 +4,14 @@
 */
 
 import { useRef } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Link from 'next/link';
 import { Formik, Form } from 'formik';
 import { object } from 'yup';
 
-import { email, name, password } from '../config/validation';
+import { email, name, password, username } from '../config/validation';
+
+import { register } from './../redux/actions/auth';
 
 import Screen from './../components/Screen';
 import Input from './../components/Input';
@@ -17,6 +20,7 @@ import Button from './../components/Button';
 const validationSchema = object().shape({
   firstName: name.label('First Name'),
   lastName: name.label('Last Name'),
+  username,
   email,
   password,
 });
@@ -24,11 +28,16 @@ const validationSchema = object().shape({
 const initialValues = {
   firstName: '',
   lastName: '',
+  username: '',
   email: '',
   password: '',
 };
 
 export default function Register(props) {
+  const registerSuccess = useSelector((state) => state.auth.registerSuccess);
+  const loading = useSelector((state) => state.auth.loading);
+  const dispatch = useDispatch();
+
   const formRef = useRef(null);
 
   const onSubmit = (values, { setSubmitting }) => {
@@ -37,6 +46,20 @@ export default function Register(props) {
       formRef.current.reset();
       setSubmitting(false);
     }, 400);
+
+    console.log('Values in On Submit: ', values);
+
+    if (dispatch && dispatch !== null && dispatch !== undefined) {
+      dispatch(
+        register(
+          values.firstName,
+          values.lastName,
+          values.username,
+          values.email,
+          values.password
+        )
+      );
+    }
   };
 
   return (
@@ -56,6 +79,7 @@ export default function Register(props) {
                 </h2>
                 <Input name='firstName' type='text' placeholder='First Name' />
                 <Input name='lastName' type='text' placeholder='Last Name' />
+                <Input name='username' type='text' placeholder='Username' />
                 <Input name='email' type='email' placeholder='Email' />
                 <Input name='password' type='password' placeholder='Password' />
                 <div className='self-start'>

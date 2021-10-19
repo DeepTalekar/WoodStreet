@@ -11,6 +11,8 @@ export const name = Yup.string()
   .max(35)
   .required();
 
+export const username = Yup.string().max(20).required().label('Username');
+
 export const email = Yup.string()
   .required()
   .email('Must be a Valid Email')
