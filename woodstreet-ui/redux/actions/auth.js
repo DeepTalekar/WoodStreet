@@ -17,13 +17,14 @@ export const register =
     });
 
     try {
-      const body = {
+      const body = JSON.stringify({
         first_name,
         last_name,
         username,
         email,
         password,
-      };
+      });
+
       const response = await fetch('/api/accounts/register', {
         method: 'POST',
         headers: {

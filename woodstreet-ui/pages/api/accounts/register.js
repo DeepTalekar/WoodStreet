@@ -12,10 +12,9 @@ export default async (req, res) => {
         password,
       });
 
-      const apiRes = await fetch(`${API_URL}/api/accounts/register`, {
+      const apiRes = await fetch(`${API_URL}/api/accounts/register/`, {
         method: 'POST',
         headers: {
-          Accept: 'application/json',
           'Content-Type': 'application/json',
         },
         body: body,
