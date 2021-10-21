@@ -5,6 +5,7 @@
 
 import { useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { ExclamationCircleIcon } from '@heroicons/react/outline';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { Formik, Form } from 'formik';
@@ -38,6 +39,7 @@ export default function Register(props) {
   const router = useRouter();
 
   const registerSuccess = useSelector((state) => state.auth.registerSuccess);
+  const registerFail = useSelector((state) => state.auth.registerFail);
   const loading = useSelector((state) => state.auth.loading);
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const dispatch = useDispatch();
@@ -45,12 +47,6 @@ export default function Register(props) {
   const formRef = useRef(null);
 
   const onSubmit = (values, { setSubmitting }) => {
-    setTimeout(() => {
-      alert(JSON.stringify(values, null, 2));
-      formRef.current.reset();
-      setSubmitting(false);
-    }, 400);
-
     console.log('Values in On Submit: ', values);
 
     if (dispatch && dispatch !== null && dispatch !== undefined) {
@@ -64,6 +60,9 @@ export default function Register(props) {
         )
       );
     }
+
+    formRef.current.reset();
+    setSubmitting(false);
   };
 
   if (typeof window !== 'undefined' && isAuthenticated) router.push('/');
@@ -73,7 +72,33 @@ export default function Register(props) {
   return (
     <Screen title='Create Account | WoodStreet'>
       <div className='mx-auto bg-footerBg'>
-        <section className='flex flex-col justify-center items-center px-4% py-24 bg-transparent space-y-3'>
+        {registerSuccess == true && (
+          <div className='pt-8 space-y-4'>
+            <section className='w-500 bg-green-500 text-white text-lg font-semibold text-center mx-auto py-2 rounded-full'>
+              <p>Your Account is Successfully Created</p>
+            </section>
+            <section className='w-500 flex flex-row justify-center items-center text-link text-lg font-semibold text-center mx-auto py-2 rounded-full'>
+              <ExclamationCircleIcon className='w-10 h-10' />
+              <p>
+                <b>Please don't refresh the page,</b> it will automatically
+                redirect you to Login
+              </p>
+            </section>
+          </div>
+        )}
+        {registerFail == true && (
+          <div className='pt-8'>
+            <section className='w-500 bg-error text-white text-lg font-semibold text-center mx-auto py-2 rounded-full'>
+              <p>
+                An <b>Error</b> occured while registering your account{' '}
+              </p>
+            </section>
+          </div>
+        )}
+        <section
+          className={`flex flex-col justify-center items-center px-4% ${
+            registerFail == true || registerSuccess == true ? 'py-6' : 'py-24'
+          } bg-transparent space-y-3`}>
           <Formik
             initialValues={initialValues}
             validationSchema={validationSchema}

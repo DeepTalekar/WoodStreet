@@ -4,10 +4,20 @@
 */
 import React from 'react';
 
-export default function IconUser({ props, width, height, stroke }) {
+export default function IconUser({
+  props,
+  width,
+  height,
+  stroke,
+  isAuthenticated,
+}) {
   return (
     <svg
-      className='stroke-current text-primary hover:stroke-current hover:text-link'
+      className={`stroke-current text-primary ${
+        isAuthenticated
+          ? 'group-hover:stroke-current group-hover:text-link'
+          : 'hover:stroke-current hover:text-link'
+      }`}
       width={width}
       height={height}
       viewBox='0 0 50 50'

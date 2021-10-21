@@ -5,6 +5,7 @@
 
 import { useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { ExclamationCircleIcon } from '@heroicons/react/outline';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { Formik, Form } from 'formik';
@@ -12,7 +13,11 @@ import { object } from 'yup';
 
 import { username, password } from '../config/validation';
 
-import { login, resetRegisterSuccess } from './../redux/actions/auth';
+import {
+  login,
+  resetLoginSuccess,
+  resetRegisterSuccess,
+} from './../redux/actions/auth';
 
 import Screen from './../components/Screen';
 import Input from './../components/Input';
@@ -25,6 +30,8 @@ const initialValues = { username: '', password: '' };
 export default function Login(props) {
   const dispatch = useDispatch();
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  const loginSuccess = useSelector((state) => state.auth.loginSuccess);
+  const loginError = useSelector((state) => state.auth.loginError);
   const loading = useSelector((state) => state.auth.loading);
 
   const router = useRouter();
@@ -32,19 +39,18 @@ export default function Login(props) {
   const formRef = useRef(null);
 
   const onSubmit = (values, { setSubmitting }) => {
-    setTimeout(() => {
-      alert(JSON.stringify(values, null, 2));
-      formRef.current.reset();
-      setSubmitting(false);
-    }, 400);
     if (dispatch && dispatch !== null && dispatch !== undefined) {
       dispatch(login(values.username, values.password));
     }
+
+    formRef.current.reset();
+    setSubmitting(false);
   };
 
   useEffect(() => {
     if (dispatch && dispatch !== null && dispatch !== undefined) {
       dispatch(resetRegisterSuccess());
+      dispatch(resetLoginSuccess());
     }
   }, []);
 
@@ -53,6 +59,28 @@ export default function Login(props) {
   return (
     <Screen title='Account | WoodStreet'>
       <div className='mx-auto bg-footerBg'>
+        {loginSuccess && (
+          <div className='pt-8 space-y-4'>
+            <section className='w-500 bg-green-500 text-white text-lg font-semibold text-center mx-auto py-2 rounded-full'>
+              <p>You Have Logged In Successfully</p>
+            </section>
+            <section className='w-500 flex flex-row justify-center items-center text-link text-lg font-semibold text-center mx-auto py-2 rounded-full'>
+              <ExclamationCircleIcon className='w-10 h-10' />
+              <p>
+                <b>Please don't refresh the page,</b> it will automatically
+                redirect you to Home Page
+              </p>
+            </section>
+          </div>
+        )}
+        {loginError && loginError == 'Authentication Failed!' && (
+          <div className='pt-8'>
+            <section className='w-500 flex flex-row justify-center items-center bg-error text-white text-lg font-semibold text-center mx-auto py-2 rounded-full'>
+              <ExclamationCircleIcon className='w-8 h-8' />
+              <p className='ml-2'>Invalid Username or Password!</p>
+            </section>
+          </div>
+        )}
         <section className='flex flex-col justify-center items-center px-4% py-24 bg-transparent space-y-3'>
           <Formik
             initialValues={initialValues}

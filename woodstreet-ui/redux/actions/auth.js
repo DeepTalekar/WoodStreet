@@ -8,11 +8,14 @@ import {
   LOGIN_SUCCESS,
   LOGOUT_FAIL,
   LOGOUT_SUCCESS,
+  LOAD_USER_FAIL,
+  LOAD_USER_SUCCESS,
   REGISTER_FAIL,
   REGISTER_SUCCESS,
   REMOVE_AUTH_LOADING,
   RESET_REGISTER_SUCCESS,
   SET_AUTH_LOADING,
+  RESET_LOGIN_SUCCESS,
 } from './types';
 
 export const register =
@@ -89,15 +92,26 @@ export const login = (username, password) => async (dispatch) => {
       dispatch({
         type: LOGIN_SUCCESS,
       });
+      dispatch(loadUser());
     } else {
-      dispatch({ type: LOGIN_FAIL });
+      const data = await res.json();
+      dispatch({ type: LOGIN_FAIL, payload: data.error });
     }
   } catch (err) {
-    dispatch({ type: LOGIN_FAIL });
+    dispatch({
+      type: LOGIN_FAIL,
+      payload: { error: 'Something went Wrong while loggin In!' },
+    });
   }
 
   dispatch({
     type: REMOVE_AUTH_LOADING,
+  });
+};
+
+export const resetLoginSuccess = () => (dispatch) => {
+  dispatch({
+    type: RESET_LOGIN_SUCCESS,
   });
 };
 
@@ -107,7 +121,7 @@ export const logout = () => async (dispatch) => {
   });
 
   try {
-    const res = await fetch('api/accounts/logout/', {
+    const res = await fetch('/api/accounts/logout/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -127,4 +141,32 @@ export const logout = () => async (dispatch) => {
   dispatch({
     type: REMOVE_AUTH_LOADING,
   });
+};
+
+export const loadUser = () => async (dispatch) => {
+  try {
+    const res = await fetch('/api/accounts/user/', {
+      method: 'GET',
+      headers: {
+        Accept: 'application/json',
+      },
+    });
+
+    const data = await res.json();
+
+    if (res.status === 200) {
+      dispatch({
+        type: LOAD_USER_SUCCESS,
+        payload: data,
+      });
+    } else {
+      dispatch({
+        type: LOAD_USER_FAIL,
+      });
+    }
+  } catch (err) {
+    dispatch({
+      type: LOAD_USER_FAIL,
+    });
+  }
 };

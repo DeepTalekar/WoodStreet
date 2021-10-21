@@ -7,12 +7,13 @@ import React, { useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { Menu, Transition } from '@headlessui/react';
+import { Menu, Popover, Transition } from '@headlessui/react';
 import {
   ChevronDownIcon,
   MenuIcon,
   SearchIcon,
   ShoppingCartIcon,
+  LogoutIcon,
   XIcon,
 } from '@heroicons/react/outline';
 
@@ -25,8 +26,9 @@ export default function Navbar(props) {
 
   const dispatch = useDispatch();
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  const user = useSelector((state) => state.auth.user);
 
-  const logoutHandler = () => {
+  const onLogoutClick = () => {
     if (dispatch && dispatch !== null && dispatch !== undefined) {
       dispatch(logout());
     }
@@ -56,6 +58,52 @@ export default function Navbar(props) {
     setState({ ...state, isSearchEnable: !state.isSearchEnable });
   };
 
+  const authUserLinks = (
+    <Popover>
+      {({ open }) => (
+        <>
+          <Popover.Button className='group flex flex-row justify-center items-center cursor-pointer'>
+            <IconUser
+              className='group-hover:text-link'
+              height={50}
+              width={50}
+              isAuthenticated={isAuthenticated}
+            />
+            <span className='group-hover:text-link pr-4'>
+              {user !== null && user.username}
+            </span>
+          </Popover.Button>
+
+          <Transition
+            className='absolute flex flex-col justify-between items-start bg-gray-100 p-4 z-30 rounded-lg shadow-2xl ring-gray-400 w-36'
+            show={open}
+            enter='transition duration-100 ease-out'
+            enterFrom='transform scale-95 opacity-0'
+            enterTo='transform scale-100 opacity-100'
+            leave='transition duration-75 ease-out'
+            leaveFrom='transform scale-100 opacity-100'
+            leaveTo='transform scale-95 opacity-0'>
+            <Popover.Panel
+              as='a'
+              className='flex flex-row justify-center items-start cursor-pointer group text-primary '
+              onClick={onLogoutClick}>
+              <LogoutIcon className='w-6 h-6 text-primary group-hover:text-link' />
+              <span className='group-hover:text-link ml-2'>Logout</span>
+            </Popover.Panel>
+          </Transition>
+        </>
+      )}
+    </Popover>
+  );
+
+  const guestLinks = (
+    <Link href='/Login'>
+      <span>
+        <IconUser height={50} width={50} isAuthenticated={isAuthenticated} />
+      </span>
+    </Link>
+  );
+
   return (
     <div className='fixed z-40 bg-white w-full'>
       <header className='grid place-self-center place-items-center grid-cols-8 gap-1 gap-y-6  font-sans py-3 w-full px-4% md:grid-cols-2 xl:grid-cols-10 z-40'>
@@ -72,7 +120,8 @@ export default function Navbar(props) {
             </a>
           </Link>
         </h2>
-        <div className='col-span-2 self-center grid grid-cols-2 gap-6 place-self-end md:grid-cols-3 md:row-span-1 md:col-span-1 md:gap-3 xl:col-start-9 xl:col-span-3'>
+        <div
+          className={`col-span-2 self-center grid grid-cols-2 gap-6 place-self-end md:grid-cols-3 md:row-span-1 md:col-span-1 md:gap-3 xl:col-start-9 xl:col-span-3`}>
           <div className='place-self-center col-span-1'>
             <SearchIcon
               onClick={onSearchIconPress}
@@ -80,11 +129,7 @@ export default function Navbar(props) {
             />
           </div>
           <div className='place-self-center col-span-1 hidden md:inline'>
-            <Link href='/Login'>
-              <span>
-                <IconUser height={50} width={50} />
-              </span>
-            </Link>
+            {isAuthenticated ? authUserLinks : guestLinks}
           </div>
           <div className='place-self-center col-span-1'>
             <Link href='/Cart'>

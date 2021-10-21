@@ -85,6 +85,10 @@ module.exports = {
           '100%': { transform: 'translateY(100%)', opacity: 0 },
         },
       },
+      margin: {
+        '4%': '4%',
+        '-4%': '-4%',
+      },
       padding: {
         '4%': '4%',
         '-4%': '-4%',

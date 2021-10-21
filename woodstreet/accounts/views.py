@@ -3,7 +3,6 @@ from django.contrib.auth.models import User
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from rest_framework import permissions, status
-from rest_framework.utils import serializer_helpers
 from .serializers import UserSerializer
 
 # Create your views here.
@@ -49,9 +48,10 @@ def registerAccount(request):
             )
     except Exception as e:
         return Response(
-            {'error': 'Something Went wrong when trying to register',
-             'exception': e.__str__()
-             },
+            {
+                'error': 'Something Went wrong when trying to register',
+                'exception': e.__str__()
+            },
             status=status.HTTP_500_INTERNAL_SERVER_ERROR
         )
 
