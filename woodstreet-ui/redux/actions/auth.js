@@ -4,19 +4,68 @@
 */
 
 import {
+  AUTHENTICATED_FAIL,
+  AUTHENTICATED_SUCCESS,
+  LOAD_USER_FAIL,
+  LOAD_USER_SUCCESS,
   LOGIN_FAIL,
   LOGIN_SUCCESS,
   LOGOUT_FAIL,
   LOGOUT_SUCCESS,
-  LOAD_USER_FAIL,
-  LOAD_USER_SUCCESS,
+  REFRESH_FAIL,
+  REFRESH_SUCCESS,
   REGISTER_FAIL,
   REGISTER_SUCCESS,
   REMOVE_AUTH_LOADING,
+  RESET_LOGIN_SUCCESS,
   RESET_REGISTER_SUCCESS,
   SET_AUTH_LOADING,
-  RESET_LOGIN_SUCCESS,
 } from './types';
+
+export const checkAuthStatus = () => async (dispatch) => {
+  try {
+    const res = await fetch('/api/accounts/verify/', {
+      method: 'GET',
+      headers: {
+        Accept: 'application/json',
+      },
+    });
+
+    if (res.status === 200) {
+      dispatch({
+        type: AUTHENTICATED_SUCCESS,
+      });
+      dispatch(loadUser());
+    } else
+      dispatch({
+        type: AUTHENTICATED_FAIL,
+      });
+  } catch (err) {
+    dispatch({
+      type: AUTHENTICATED_FAIL,
+    });
+  }
+};
+
+export const requestRefreshToken = () => async (dispatch) => {
+  try {
+    const res = await fetch('/api/accounts/refresh/', {
+      method: 'GET',
+      headers: {
+        Accept: 'application/json',
+      },
+    });
+
+    if (res.status === 200) {
+      dispatch({ type: REFRESH_SUCCESS });
+      dispatch(checkAuthStatus());
+    } else {
+      dispatch({ type: REFRESH_FAIL });
+    }
+  } catch (err) {
+    dispatch({ type: REFRESH_FAIL });
+  }
+};
 
 export const register =
   (first_name, last_name, username, email, password) => async (dispatch) => {

@@ -4,12 +4,16 @@
 */
 
 import {
+  AUTHENTICATED_FAIL,
+  AUTHENTICATED_SUCCESS,
+  LOAD_USER_FAIL,
+  LOAD_USER_SUCCESS,
   LOGIN_FAIL,
   LOGIN_SUCCESS,
   LOGOUT_FAIL,
   LOGOUT_SUCCESS,
-  LOAD_USER_FAIL,
-  LOAD_USER_SUCCESS,
+  REFRESH_FAIL,
+  REFRESH_SUCCESS,
   REGISTER_FAIL,
   REGISTER_SUCCESS,
   REMOVE_AUTH_LOADING,
@@ -33,6 +37,31 @@ const authReducer = (state = initialState, action) => {
   const { type, payload } = action;
 
   switch (type) {
+    case AUTHENTICATED_SUCCESS:
+      return {
+        ...state,
+        isAuthenticated: true,
+      };
+
+    case AUTHENTICATED_FAIL:
+      return {
+        ...state,
+        isAuthenticated: false,
+        user: null,
+      };
+
+    case REFRESH_SUCCESS:
+      return {
+        ...state,
+      };
+
+    case REFRESH_FAIL:
+      return {
+        ...state,
+        isAuthenticated: false,
+        user: null,
+      };
+
     case REGISTER_SUCCESS:
       return {
         ...state,

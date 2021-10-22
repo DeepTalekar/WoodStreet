@@ -52,7 +52,7 @@ export default function Login(props) {
       dispatch(resetRegisterSuccess());
       dispatch(resetLoginSuccess());
     }
-  }, []);
+  }, [dispatch]);
 
   if (typeof window !== 'undefined' && isAuthenticated) router.push('/');
 
