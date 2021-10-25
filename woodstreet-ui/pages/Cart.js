@@ -10,6 +10,7 @@ import Counter from '../components/Counter';
 import Button from '../components/Button';
 import Screen from '../components/Screen';
 import yellowChair from '../public/images/products/yellowChair.webp'
+import CartDisplay from '../components/CartDisplay';
 
 
 export default function Cart(props) {
@@ -29,6 +30,7 @@ export default function Cart(props) {
 
  let prize = count * price;
  let prize1 = prize + 100;
+ let ten=10;
 
  function Payment() {
   alert(`Payement of Rs ${prize1} is done succesfully`);
@@ -71,56 +73,14 @@ export default function Cart(props) {
               </a>
             </Link>
           </div>
-          
-         <div className="flex justify-around mt-24">
-           <div>
-           <Image src={yellowChair} width={150}
-           height={150}
-           layout='fixed' />
-           </div>
-           <div className="float-right pr-14">
-            <div className="px-12">
-              <h1 className=" font-bold">Yellow Chair</h1>
-              <p className=" text-sm">Description</p>
-              <p className="">This is a demonstration store.</p>
-              <p className=" "> If you've been hunting for a new addition to your home, it's here.
-                 Designed to beautifully fit any space it's in, 
-               and guaranteed to be the highlight in your home.</p>
-               <Button 
-              href=''
-              title='Remove'
-              buttonStyle='border border-primary text-primary text-sm font-semibold bg-white hover:bg-secondary hover:border-secondary py-3'
-              onClick={Remove}
-            /> 
-            </div> 
-           </div>
-                  
-           <div className>
-           <section className='flex flex-row justify-between items-center text-mineShaft'>
-            <button
-              className={`border border-mineShaft border-opacity-60 text-sm font-normal px-3 py-2 bg-mineShaft bg-opacity-5 ${
-              count == 1 ? 'cursor-not-allowed' : 'cursor-pointer'
-              }`}
-              disabled={count == 1} // Minimum Quantity customer can order
-              onClick={decrement}>
-              -
-            </button>
-            <p className='border-t border-b border-mineShaft border-opacity-60 text-sm font-normal px-3 py-2'>
-             {count}
-            </p>
-            <button
-             className={`border border-mineShaft border-opacity-60 text-sm font-normal px-3 py-2 bg-mineShaft bg-opacity-5 ${
-             count == 10 ? 'cursor-not-allowed' : 'cursor-pointer'
-             }`}
-             disabled={count == 10} // Maximum Quantity customer can order
-             onClick={increment}>
-             +
-            </button>
-            </section>
-            <h1 className="text-sm font-extrabold pt-4">Price: Rs {prize}</h1>
-            
-          </div>
-        </div>
+       
+       
+         <CartDisplay image={yellowChair} name="Yellow Chair" price={200}/>
+         <CartDisplay image={yellowChair} name="Yellow Chair" price={200}/>
+         
+         
+  
+
         <div className="float-right ">
           <p>Total payement(including Taxes and shipping fee) : Rs {prize1}</p>
           
