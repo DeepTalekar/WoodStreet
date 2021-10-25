@@ -22,14 +22,14 @@ const Shop = (props) => {
         </p>
         <div className='grid grid-cols-9 auto-rows-min gap-7 px-4%'>
           <div className='relative row-start-1 col-start-1 row-span-3 col-span-3 place-items-center cursor-pointer group'>
-            <ShopCategories name='Accessories' image={Accessories} href='/' />
+            <ShopCategories name='Accessories' image={Accessories} href='/Accessoriespage' />
           </div>
 
           <div className='relative col-start-4 row-start-1 row-span-3 col-span-3 place-items-center cursor-pointer group'>
             <ShopCategories
               name='Architectural Photography'
               image={Architectural}
-              href='/'
+              href='/Architectural_Photography'
             />
           </div>
 
@@ -37,23 +37,23 @@ const Shop = (props) => {
             <ShopCategories
               name='Decorative Objects'
               image={Decorative}
-              href='/'
+              href='/DecorativePages'
             />
           </div>
 
           <div className='relative row-start-4  col-start-1 row-span-3 col-span-3 place-items-center cursor-pointer group'>
-            <ShopCategories name='Furniture' image={Furniture} href='/' />
+            <ShopCategories name='Furniture' image={Furniture} href='/FurniturePage' />
           </div>
 
           <div className='relative col-start-4 row-start-4 row-span-3 col-span-3 place-items-center cursor-pointer group'>
-            <ShopCategories name='Lighting' image={Lightning} href='/' />
+            <ShopCategories name='Lighting' image={Lightning} href='/LightningP' />
           </div>
 
           <div className='relative col-start-7 row-start-4 row-span-3 col-span-3 place-items-center cursor-pointer group'>
             <ShopCategories
               name='Sitting Area Furniture'
               image={Sitting}
-              href='/'
+              href='/SittingAreaP'
             />
           </div>
         </div>
