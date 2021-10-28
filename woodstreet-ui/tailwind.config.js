@@ -33,6 +33,7 @@ module.exports = {
           DEFAULT: '#1990c6',
         },
         mineShaft: {
+          light: '#282828',
           DEFAULT: '#313131',
         },
         porcelain: {
